@@ -93,7 +93,7 @@ Vagrant.configure(2) do |config|
       sudo apt-get -y install postgresql libpq-dev
       sudo -u postgres createuser vagrant
       sudo -u postgres createdb vagrant
-      sudo -u postgres createdb -O vagrant noseyboy
+      sudo -u postgres createdb -O vagrant time_tracker
       sudo -u postgres psql -c "ALTER ROLE vagrant SUPERUSER"
   
       cd /vagrant
