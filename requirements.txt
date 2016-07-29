@@ -1,0 +1,11 @@
+pip
+setuptools
+
+Django
+django-rest-swagger
+djangorestframework
+factory-boy
+ipdb
+ipython
+Markdown
+psycopg2
