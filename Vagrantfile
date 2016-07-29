@@ -52,6 +52,9 @@ Vagrant.configure(2) do |config|
       sudo apt-get -y install software-properties-common python-software-properties
       
       sudo apt-get install -y virtualbox-guest-utils
+      
+      # DOCKER
+      curl -sSL https://get.docker.com/ | sh
   
       set -e
       
