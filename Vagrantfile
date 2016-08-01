@@ -55,6 +55,9 @@ Vagrant.configure(2) do |config|
       
       # DOCKER
       curl -sSL https://get.docker.com/ | sh
+      
+      curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > sudo /usr/local/bin/docker-machine
+      sudo chmod +x /usr/local/bin/docker-machine
   
       set -e
       
