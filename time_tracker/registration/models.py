@@ -7,12 +7,14 @@ class UserManager(DefaultUserManager):
     def _create_user(self, username, password, **kwargs):
         user = User.objects.create(username=username, **kwargs)
         user.set_password(password)
+        user.save(using=self._db)
+        return user
         
     def create_user(self, username, password, **kwargs):
-        self._create_user(username, password, **kwargs)
+        return self._create_user(username, password, **kwargs)
     
     def create_superuser(self, username, password, **kwargs):
-        self._create_user(username, password, is_staff=True, **kwargs)
+        return self._create_user(username, password, is_staff=True, is_superuser=True, **kwargs)
     
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -30,3 +32,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     # MANAGERS
     objects = UserManager()
+    
+    # Django required
+    def get_full_name(self):
+        return self.username
+
+    def get_short_name(self):
+        return self.username
