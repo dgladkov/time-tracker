@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_swagger',
     # apps
-    'registration',
-    'records',
+    'registration.apps.RegistrationConfig',
+    'records.apps.RecordsConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
