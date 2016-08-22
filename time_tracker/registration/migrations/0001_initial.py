@@ -9,8 +9,10 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('auth', '0007_alter_validators_add_error_messages'),
+    dependencies = [('auth', '0006_require_contenttypes_0002'),]
+    
+    run_before = [
+        ('authtoken', '0001_initial'),
     ]
 
     operations = [
