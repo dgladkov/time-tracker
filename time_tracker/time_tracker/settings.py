@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     # apps
     'registration',
+    'records',
 ]
 
 MIDDLEWARE_CLASSES = [
