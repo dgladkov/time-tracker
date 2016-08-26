@@ -6,6 +6,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
 from registration.tests.factories import UserFactory
+from ..models import Record
 
 User = get_user_model()
 
@@ -22,5 +23,6 @@ class TestRecordCRUD(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         
     def test_create_record(self):
-        resp = self.client(reverse('records'), self.data)
+        resp = self.client.post(reverse('records'), self.data)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED, msg=str(resp.content))
+        self.assertEqual(Record.objects.count(), 1)

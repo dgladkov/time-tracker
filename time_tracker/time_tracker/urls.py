@@ -16,6 +16,7 @@ def schema_view(request):
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/users/', include('registration.urls')),
+    url(r'^api/records/', include('records.urls')),
     # Docs
     url(r'^docs/', schema_view),
 ]
