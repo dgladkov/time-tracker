@@ -6,7 +6,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
 from registration.tests.factories import UserFactory
-from ..models import Record
+from .factories import ProjectFactory
+from ..models import Record, Project
 
 User = get_user_model()
 
@@ -26,3 +27,11 @@ class TestRecordCRUD(APITestCase):
         resp = self.client.post(reverse('records'), self.data)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED, msg=str(resp.content))
         self.assertEqual(Record.objects.count(), 1)
+        
+    def test_create_record_with_project_when_project_exist(self):
+        project = ProjectFactory()
+        self.data.update({'project': project.name})
+        resp = self.client.post(reverse('records'), self.data)
+        self.assertEqual(resp.status_code, status.HTTP_201_CREATED, msg=str(resp.content))
+        r = Record.objects.get(time_spent=self.data['time_spent'])
+        self.assertEqual(r.project, project)

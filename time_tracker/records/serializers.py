@@ -8,19 +8,22 @@ from .models import Record, Project
 User = get_user_model()
 
 
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Project
+        fields = ('name', 'description',)
+        
+
 class RecordSerializer(serializers.ModelSerializer):
+    project = serializers.SlugRelatedField(slug_field='name', queryset=Project.objects.all(), allow_null=True, allow_empty=True)
+    
     class Meta:
         model = Record
         fields = ('user', 'project', 'time_spent', 'date', 'description', 'timestamp',)
-        read_only_fields = ('user', 'timestamp')
-        
-        
+        read_only_fields = ('user', 'timestamp')        
+          
     def save(self, **kwargs):
         instance = super().save(user=self.context['request'].user)
         return instance
         
 
-class ProjectSerializer(serializers.ModelSerializer):
-    class Meta: 
-        model = Project
-        fields = ('name', 'description',)
