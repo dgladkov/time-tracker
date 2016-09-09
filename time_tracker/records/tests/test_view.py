@@ -23,7 +23,7 @@ class TestRecordCRUD(APITestCase):
         token = Token.objects.get(user__username=self.user.username)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         
-    def test_create_record(self):
+    def test_create_record_without_project(self):
         resp = self.client.post(reverse('records'), self.data)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED, msg=str(resp.content))
         self.assertEqual(Record.objects.count(), 1)
