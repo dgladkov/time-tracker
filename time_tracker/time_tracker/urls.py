@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/users/', include('registration.urls')),
     url(r'^api/records/', include('records.urls')),
+    url(r'/records/', include('records.urls_view')),
     # Docs
     url(r'^docs/', schema_view),
 ]
