@@ -16,7 +16,7 @@ class TestRecordCRUD(APITestCase):
     def setUp(self):
         self.data = {
             'time_spent': 1.1,
-            'date': timezone.now(),            
+            'date': timezone.now().date(),            
         }
         self.user = UserFactory()
         # auth
@@ -33,5 +33,5 @@ class TestRecordCRUD(APITestCase):
         self.data.update({'project': project.name})
         resp = self.client.post(reverse('records'), self.data)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED, msg=str(resp.content))
-        r = Record.objects.get(time_spent=self.data['time_spent'])
+        r = Record.objects.get(date=self.data['date'])
         self.assertEqual(r.project, project)
