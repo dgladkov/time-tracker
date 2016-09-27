@@ -1,8 +1,12 @@
+import os
+from .base import BASE_DIR
+
+DEBUG = True
+SECRET_KEY = 'notasecret'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'time_tracker',
-        'USER': 'vagrant',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
