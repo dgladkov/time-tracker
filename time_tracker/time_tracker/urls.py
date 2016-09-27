@@ -10,14 +10,15 @@ from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 @renderer_classes([SwaggerUIRenderer, OpenAPIRenderer, renderers.CoreJSONRenderer])
 def schema_view(request):
     generator = schemas.SchemaGenerator(title='Pastebin API')
-    return response.Response(generator.get_schema(request=request))
+    return response.Response(generator.get_schema(request=request)) 
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/users/', include('registration.urls')),
     url(r'^api/records/', include('records.urls')),
-    url(r'/records/', include('records.urls_view')),
     # Docs
     url(r'^docs/', schema_view),
+    # views
+    url(r'', include('records.urls_view')),
 ]

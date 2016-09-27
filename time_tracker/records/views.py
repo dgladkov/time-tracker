@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.http.response import HttpResponse
 from django.shortcuts import render_to_response
 from rest_framework import status, generics
 from rest_framework.permissions import IsAuthenticated
@@ -15,5 +16,11 @@ class Records(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     
     
+# VIEWS
+
+def index(request):
+    rs = Record.objects.all()
+    return render_to_response('index.html', {'records': rs})
+
 def records_view(request):
     return render_to_response('records_form.html')
