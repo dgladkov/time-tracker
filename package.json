@@ -1,0 +1,40 @@
+{
+  "name": "time-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run clean && npm run build:webpack",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "clean": "rimraf dist",
+    "lint": "eslint src",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
+    "react-redux": "4.4.5",
+    "react-router": "2.8.1",
+    "react-tap-event-plugin": "1.0.0",
+    "redux": "3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.14.0",
+    "babel-loader": "6.2.5",
+    "babel-preset-latest": "6.14.0",
+    "babel-preset-react": "6.11.1",
+    "babel-preset-stage-1": "6.13.0",
+    "cross-env": "3.0.0",
+    "css-loader": "0.25.0",
+    "eslint": "3.6.1",
+    "eslint-plugin-react": "6.3.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "html-webpack-plugin": "2.22.0",
+    "node-sass": "3.10.0",
+    "react-hot-loader": "3.0.0-beta.5",
+    "rimraf": "2.5.4",
+    "sass-loader": "4.0.2",
+    "style-loader": "0.13.1",
+    "webpack": "1.13.2",
+    "webpack-dev-server": "1.16.1"
+  }
+}
