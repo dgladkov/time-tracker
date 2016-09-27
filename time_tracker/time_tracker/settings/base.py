@@ -78,22 +78,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'time_tracker.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'time_tracker',
-        'USER': 'uwsgi',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
