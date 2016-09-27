@@ -15,6 +15,7 @@ def schema_view(request):
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/users/', include('registration.urls')),
     url(r'^api/records/', include('records.urls')),
     # Docs
